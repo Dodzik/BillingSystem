@@ -86,6 +86,8 @@ which allows us to auto-detect implementation classes through the classpath scan
 ### Browser support
 The project has been prepared for the browser *Google Chrome v84+*
 
+Tested on *IntelliJ IDEA ultimate 2021.2.2*
+
 
 ## Sample program results
 
