@@ -33,7 +33,7 @@ To run the h2 DataBase console you need to copy the URL,
 go to the page [http://localhost:8080/h2-console/](http://localhost:8080/h2-console/)
 paste the URL in the JDBC URL field and then press the connect button.
 
-![view](./screens/h2Con.JPG)
+![view](./screens/h2Console.jpg)
 
 Then you can browse the collected data, on this page you can edit, add and delete all 
 records from the database.
