@@ -24,7 +24,7 @@ To run Internet applications on your own device, compile WebappApplication and t
 
 ![view](./screens/WebapplicationScreen.JPG)
 
-###How to open DataBase
+### How to open DataBase
 
 To run the h2 DataBase console you need to copy the URL, 
 
