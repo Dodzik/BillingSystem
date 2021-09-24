@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Billing Program</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
+    <style>
+        .wrap-words {
+            max-width: 1px;
+        }
+    </style>
+    <script>
+        function openPage() {
+            let x = document.getElementById("search").value;
+            if (x) {
+                window.open("/user/" + x);
+            }
+        }
+    </script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <div class="navbar-brand">Billing Program</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{~/home}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{~/users}">List of all users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{~/calls}">List of all calls</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Content-->
+<div class="container px-4 px-lg-5 flex-fill text-center">
+    <!-- Heading Row-->
+    <div class="align-items-center my-5 text-center">
+        <div class="mb-4">
+            <h1 th:text="${user.getFirstName()}+' '+${user.getLastName()}"></h1>
+        </div>
+        <div class="col-12 col-md-10 col-xl-8 mx-auto table-responsive">
+            <table class="table text-center">
+                <thead>
+                <tr>
+                    <th>Numer Telefonu</th>
+                    <th>Transfer Used [MB]</th>
+                    <th>Total number of calls</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td th:text="${user.getMainNumber()}"></td>
+                    <td th:text="${user.getTransferUsed()}"></td>
+                    <td th:text="${calls.size()}+${outgoingCalls.size()}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="my-4">
+        <h3>Calls list</h3>
+    </div>
+
+    <div class="my-3">
+        <h5>Outgoing calls</h5>
+    </div>
+    <div class="col-12 col-md-10 col-xl-8 mx-auto table-responsive overflow-auto" style="height: 33vh!important;">
+        <table class="table text-center table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Main Number</th>
+                <th>Target Number</th>
+                <th>Talk Time [s]</th>
+                <th>Data</th>
+            </tr>
+            </thead>
+            <tr th:each="call:${calls}">
+                <td th:text="${call.id}">123</td>
+                <td th:text="${call.mainNumber}"> Jan</td>
+                <td th:text="${call.targetNumber}"> Kowalski</td>
+                <td th:text="${call.talkTime}"></td>
+                <td th:text="${call.date}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="my-3 mt-4">
+        <h5>Incoming calls</h5>
+    </div>
+    <div class="col-12 col-md-10 col-xl-8 mx-auto table-responsive overflow-auto" style="height: 33vh!important;">
+        <table class="table text-center table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Main Number</th>
+                <th>Target Number</th>
+                <th>Talk Time [s]</th>
+                <th>Data</th>
+            </tr>
+            </thead>
+            <tr th:each="outgoingCall:${outgoingCalls}">
+                <td th:text="${outgoingCall.id}">123</td>
+                <td th:text="${outgoingCall.mainNumber}"> Jan</td>
+                <td th:text="${outgoingCall.targetNumber}"> Kowalski</td>
+                <td th:text="${outgoingCall.talkTime}"></td>
+                <td th:text="${outgoingCall.date}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="d-flex col-12 justify-content-center my-5">
+        <div class="my-2 col-lg-3 col-md-4 col-sm-5 col-8">
+            <input type="search" id="search" class="form-control text-center" placeholder="Enter phone number">
+        </div>
+        <button class="btn btn-primary ms-2 my-2" onclick="openPage()">Check</button>
+    </div>
+
+</div>
+<footer class="py-3 bg-dark mt-5">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Przemysław Rodzik 2021</p>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Billing Program</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
+
+    <script>
+        function openPage() {
+            let x = document.getElementById("search").value;
+            if (x) {
+                window.open("/user/" + x);
+            }
+        }
+    </script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <div class="navbar-brand">Billing Program</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{~/home}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{~/users}">List of all users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{~/calls}">List of all calls</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Content-->
+<div class="container px-4 px-lg-5 flex-fill">
+    <!-- Heading Row-->
+    <div class="align-items-center my-5">
+        <div class="flex-column mx-auto text-center">
+            <label for="search" class="form-label mx-auto">Search user by phone number</label>
+            <div class="my-2 mx-auto col-lg-3 col-md-4 col-sm-5 col-8">
+                <input type="search" id="search" class="form-control text-center" placeholder="Enter phone number">
+            </div>
+            <button class="btn btn-primary my-1 mx-auto" onclick="openPage()">Check</button>
+        </div>
+    </div>
+</div>
+<footer class="py-3 bg-dark mt-5">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Przemysław Rodzik 2021</p>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
