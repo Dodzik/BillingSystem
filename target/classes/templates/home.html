@@ -9,16 +9,9 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}"/>
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/bootstrap.css}" href="../static/css/bootstrap.css" rel="stylesheet"/>
+    <!-- Own CSS -->
     <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
-
-    <script>
-        function openPage() {
-            let x = document.getElementById("search").value;
-            if (x) {
-                window.open("/user/" + x);
-            }
-        }
-    </script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <!-- Responsive navbar-->
@@ -46,15 +39,20 @@
 <!-- Page Content-->
 <div class="container px-4 px-lg-5 flex-fill">
     <!-- Heading Row-->
-    <div class="align-items-center my-5">
-        <div class="flex-column mx-auto text-center">
-            <label for="search" class="form-label mx-auto">Search user by phone number</label>
-            <div class="my-2 mx-auto col-lg-3 col-md-4 col-sm-5 col-8">
-                <input type="search" id="search" class="form-control text-center" placeholder="Enter phone number">
+    <form id="phone-number-search-form" class="row g-3 needs-validation my-5" novalidate
+          onsubmit="return showNumberDetails();">
+        <div class="col-md-4 mx-auto text-center">
+            <label for="phoneNumber" class="form-label">Search user by phone number</label>
+            <div class="input-group has-validation">
+                <input type="tel" class="form-control text-center" id="phoneNumber" aria-describedby="inputGroupPrepend"
+                       pattern="^[1-9][0-9]{8}$" required>
+                <div class="invalid-feedback">
+                    Please enter correct phone number
+                </div>
             </div>
-            <button class="btn btn-primary my-1 mx-auto" onclick="openPage()">Check</button>
+            <button class="btn btn-primary my-2" type="submit">Check</button>
         </div>
-    </div>
+    </form>
 </div>
 <footer class="py-3 bg-dark mt-5">
     <div class="container">
@@ -63,5 +61,7 @@
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Own JS -->
+<script th:src="@{/js/scripts.js}"></script>
 </body>
 </html>

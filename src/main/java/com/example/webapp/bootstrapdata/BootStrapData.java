@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
@@ -17,10 +18,6 @@ import java.util.Random;
 @Component
 public class BootStrapData implements CommandLineRunner {
     Random r = new Random();
-
-    String generateData(){
-        return "" + (r.nextInt(29) + 1) + "-" + (r.nextInt(12) + 1) + "-" + (r.nextInt(22) + 2000) + " " + r.nextInt(24) + ":" + r.nextInt(60) + ":" + r.nextInt(60);
-    }
 
     private final CallRepository callRepository;
     private final UserRepository userRepository;
@@ -38,11 +35,10 @@ public class BootStrapData implements CommandLineRunner {
         ArrayList<Call> listOfCalls = new ArrayList<>();
         ArrayList<String> listOfNumbers = new ArrayList<>();
         int numberOfUsers = 10;
-        int numberOfCalls = 50;
+        int numberOfCalls = 400;
         int maxTransferUsed = 4000;
         int maxTalkTime = 1000;
-        String[] tableNames = {"Marek", "Jacek", "Paweł", "Karol", "Anna", "Filip", "Antoni", "Szymon", "Franciszek", "Mikołaj", "Kacper", "Wiktor", "Leon", "Zuzanna", "Julia", "Zofia", "Hanna", "Maja", "Lena", "Alicja", "Oliwia",};
-        String[] tableSurnames = {"Ogórek", "Cukinia", "Ziemniak", "Sałata", "Kalafior", "Woźniak", "Janko", "Mazur", "Kwiatek", "Wojciech", "Krawczyk", "Karczmarek"};
+
         User firstUser = new User("Marek", "Jarek", "123456789");
         User secondUser = new User("Wiesław", "Kowalski", "987654321");
         firstUser.setTransferUsed(r.nextInt(maxTransferUsed));
@@ -54,6 +50,20 @@ public class BootStrapData implements CommandLineRunner {
         callRepository.save(call1);
         listOfUsers.add(firstUser);
         listOfUsers.add(secondUser);
+        RandomDataGenerator(numberOfUsers, numberOfCalls, maxTransferUsed, maxTalkTime, listOfUsers, listOfCalls, listOfNumbers);
+
+        System.out.println("BootStrapData started!");
+        System.out.println("calls " + callRepository.count());
+        System.out.println("users " + userRepository.count());
+    }
+
+    String generateData() {
+        return "" + (r.nextInt(29) + 1) + "-" + (r.nextInt(12) + 1) + "-" + (r.nextInt(22) + 2000) + " " + r.nextInt(24) + ":" + r.nextInt(60) + ":" + r.nextInt(60);
+    }
+
+    void RandomDataGenerator(int numberOfUsers, int numberOfCalls, int maxTransferUsed, int maxTalkTime, ArrayList<User> listOfUsers, ArrayList<Call> listOfCalls, ArrayList<String> listOfNumbers) throws ParseException {
+        String[] tableNames = {"Marek", "Jacek", "Paweł", "Karol", "Anna", "Filip", "Antoni", "Szymon", "Franciszek", "Mikołaj", "Kacper", "Wiktor", "Leon", "Zuzanna", "Julia", "Zofia", "Hanna", "Maja", "Lena", "Alicja", "Oliwia",};
+        String[] tableSurnames = {"Ogórek", "Cukinia", "Ziemniak", "Sałata", "Kalafior", "Woźniak", "Janko", "Mazur", "Kwiatek", "Wojciech", "Krawczyk", "Karczmarek"};
         for (int i = 0; i < numberOfUsers; i++) {
             StringBuilder genNumber = new StringBuilder();
             for (int j = 0; j < 9; j++) {
@@ -90,9 +100,5 @@ public class BootStrapData implements CommandLineRunner {
                 }
             }
         }
-
-        System.out.println("BootStrapData started!");
-        System.out.println("calls " + callRepository.count());
-        System.out.println("users " + userRepository.count());
     }
 }
