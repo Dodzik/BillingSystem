@@ -10,7 +10,7 @@
 * [Technologies used](#Technologies-used)
 * [Sample program results](#Sample-program-results)
 
-##General info
+## General info
 The interface allows the user to browse the calls database, user database and search for 
 user data by phone number. The top panel allows you to switch between the main page, the list 
 of users and the list of connections. To view the data of a selected user, enter his phone 
@@ -41,34 +41,34 @@ records from the database.
 ![view](./screens/h2DataBase.JPG)
 
 
-###Changing Data
+### Changing Data
 You can manipulate the number of users and calls by changing these variables.
 
 ![view](./screens/CriteriaScreen.JPG)
 
-##Overview
+## Overview
 
-###Repositories
+### Repositories
 The central interface in Spring Data repository abstraction is Repository.It takes the domain class to manage as
 well as the id type of the domain class as type arguments. This interface acts primarily as a marker interface to 
 capture the types to work with and to help you to discover interfaces that extend this one.
 
 ![view](./screens/RepositoryScreen.JPG)
 
-###Entities
+### Entities
 Entities in JPA are nothing but POJOs(Plain Old Java Object) representing data that can be persisted to the database.
 An entity represents a table stored in a database. Every instance of an entity represents a row in the table.
 
 ![view](./screens/EntityScreen.JPG)
 
-###Component
+### Component
 The JPA component enables you to store and retrieve Java objects from persistent storage using EJB 3's Java Persistence
 Architecture (JPA), which is a standard interface layer that wraps Object/Relational Mapping (ORM) products 
 such as OpenJPA, Hibernate, TopLink.
 
 ![view](./screens/ComponentScreen.JPG)
 
-###Controller
+### Controller
 We can annotate classic controllers with the @Controller annotation. This is simply a specialization of the @Component class, 
 which allows us to auto-detect implementation classes through the classpath scanning.
 
@@ -87,12 +87,12 @@ which allows us to auto-detect implementation classes through the classpath scan
 The project has been prepared for the browser *Google Chrome v84+*
 
 
-##Sample program results
+## Sample program results
 
-###Users List
+### Users List
 ![view](./screens/Screen2.JPG)
-###Calls List
+### Calls List
 ![view](./screens/Screen3.JPG)
-###Detailed User View
+### Detailed User View
 ![view](./screens/Screen4.JPG)
 
